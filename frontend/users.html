@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Usuarios</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="users.html">Usuarios</a></li>
+                <!-- Otros enlaces de navegación -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Listado de Usuarios</h2>
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los usuarios se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <button id="addUser">Agregar Usuario</button>
+    </main>
+    <script src="js/users.js"></script>
+</body>
+</html>

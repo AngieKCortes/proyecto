@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# Python environment
+venv/
+
+# PostgreSQL data
+*.sql
+
+# Logs
+logs/
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

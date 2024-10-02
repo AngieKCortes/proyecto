@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ventas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ventas</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="ventas.html">Ventas</a></li>
+                <!-- Otros enlaces de navegación -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Listado de Ventas</h2>
+        <table id="ventasTable">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Monto Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las ventas se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <button id="addSale">Agregar Venta</button>
+    </main>
+    <script src="js/ventas.js"></script>
+</body>
+</html>

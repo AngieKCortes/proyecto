@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Predicciones</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Predicciones</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="predicciones.html">Predicciones</a></li>
+                <!-- Otros enlaces de navegación -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Predicciones de Demanda</h2>
+        <table id="prediccionesTable">
+            <thead>
+                <tr>
+                    <th>Fecha de Predicción</th>
+                    <th>Producto</th>
+                    <th>Cantidad Predicha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las predicciones se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <button id="generatePrediction">Generar Predicción</button>
+    </main>
+    <script src="js/predicciones.js"></script>
+</body>
+</html>

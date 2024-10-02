@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Clientes</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <!-- Otros enlaces de navegación -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Listado de Clientes</h2>
+        <table id="clientesTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los clientes se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <button id="addClient">Agregar Cliente</button>
+    </main>
+    <script src="js/clientes.js"></script>
+</body>
+</html>
