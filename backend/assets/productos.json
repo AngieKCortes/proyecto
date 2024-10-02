@@ -1,0 +1,44 @@
+[
+    {
+        "id_producto": 1,
+        "nombre": "Zapatos deportivos",
+        "precio": 59.99,
+        "descripcion": "Zapatos cómodos y ligeros para correr",
+        "stock": 150
+    },
+    {
+        "id_producto": 2,
+        "nombre": "Camisa casual",
+        "precio": 29.99,
+        "descripcion": "Camisa de algodón para uso diario",
+        "stock": 80
+    },
+    {
+        "id_producto": 3,
+        "nombre": "Laptop portátil",
+        "precio": 749.99,
+        "descripcion": "Laptop de 15 pulgadas con 8GB de RAM y 256GB SSD",
+        "stock": 40
+    },
+    {
+        "id_producto": 4,
+        "nombre": "Audífonos Bluetooth",
+        "precio": 49.99,
+        "descripcion": "Audífonos inalámbricos con cancelación de ruido",
+        "stock": 120
+    },
+    {
+        "id_producto": 5,
+        "nombre": "Reloj inteligente",
+        "precio": 199.99,
+        "descripcion": "Reloj inteligente con monitor de actividad y GPS",
+        "stock": 60
+    },
+    {
+        "id_producto": 6,
+        "nombre": "Silla ergonómica",
+        "precio": 139.99,
+        "descripcion": "Silla ergonómica de oficina con soporte lumbar",
+        "stock": 25
+    }
+]

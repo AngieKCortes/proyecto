@@ -1,5 +1,7 @@
 // backend/routes/productos.js
-
+const productos = require("../assets/productos.json")
+const PDF = require("pdfkit");
+const ListaCircular = require('../utils/ListaCircular');
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -60,5 +62,42 @@ router.delete('/:id', async (req, res) => {
     console.error(err.message);
   }
 });
+
+router.get("/pdf",async (req, res) => {
+  try {
+      const documento = new PDF()
+      documento
+          .fontSize(20)
+          .text("Lista de inventario", {
+              align: "center",
+          });
+      documento.moveDown();
+      const listaCircular = new ListaCircular()
+
+      listaCircular.cargarArreglo(productos)
+
+      listaCircular.recorrer(producto => {
+
+          documento.fontSize(14).text(`Nombre: ${producto.nombre}`);
+          documento.fontSize(12).text(`Precio: ${producto.precio}`);
+          documento.fontSize(12).text(`Descripcion: ${producto.descripcion}`);
+          documento.fontSize(12).text(`Cantidad: ${producto.stock}`);
+          documento.moveDown();
+      })
+      // Finalizar el PDF
+      documento.end();
+
+      // Configurar la respuesta como un archivo PDF
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename = productos.pdf");
+
+      // Enviar el PDF generado
+      documento.pipe(res);
+
+  } catch (error) {
+      console.log(error)
+      res.status(500).json({ message: 'Error al crear PDF' });
+  }
+})
 
 module.exports = router;
