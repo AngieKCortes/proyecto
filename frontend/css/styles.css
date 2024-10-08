@@ -1,50 +1,137 @@
-body {
-    font-family: Arial, sans-serif;
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background: linear-gradient(135deg, #C2C8C5, #D0D0DA); /* Colores suaves de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor Principal */
+.dashboard-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 1000px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Encabezado */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+    background-color: #4A707A; /* Aplicando el color principal de la paleta */
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.8em;
+}
+
+/* Barra de Navegación */
+.navbar {
+    background-color: #7697A0; /* Segundo color de la paleta */
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 15px 0;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.navbar ul li a:hover {
+    background-color: #94B0B7; /* Tercer color de la paleta */
+    transform: scale(1.08);
+}
+
+.navbar ul li a i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* Contenido Principal */
+.content {
+    padding: 20px;
     text-align: center;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+h2 {
+    color: #2E3A59;
+    margin-bottom: 15px;
+    font-size: 2em;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+p {
+    margin-bottom: 30px;
+    color: #7697A0; /* Color del texto principal */
 }
 
-nav ul li a {
+/* Botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    background-color: #4A707A; /* Botón principal con el color destacado */
     color: white;
-    text-decoration: none;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-button {
-    margin: 10px 0;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
     border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 18px;
     cursor: pointer;
-
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: 600;
 }
+
+.action-btn:hover {
+    background-color: #7697A0; /* Cambio sutil en el hover */
+    transform: scale(1.05);
+}
+
+/* Estilo de botón secundario */
+.secondary-btn {
+    background-color: #94B0B7; /* Color secundario suave */
+}
+
+.secondary-btn:hover {
+    background-color: #C2C8C5; /* Cambio en hover para botón secundario */
+}
+
+/* Pie de Página */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #C2C8C5; /* Fondo del pie de página */
+    color: #2E3A59; /* Texto del pie */
+    font-size: 14px;
+    border-radius: 0 0 15px 15px;
+}
+

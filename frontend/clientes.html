@@ -4,37 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Clientes</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/clientes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Clientes</h1>
-        <nav>
-            <ul>
-                <li><a href="dashboard.html">Inicio</a></li>
-                <li><a href="clientes.html">Clientes</a></li>
-                <!-- Otros enlaces de navegación -->
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Listado de Clientes</h2>
-        <table id="clientesTable">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Los clientes se cargarán aquí dinámicamente -->
-            </tbody>
-        </table>
-        <button id="addClient">Agregar Cliente</button>
-    </main>
+    <div class="container">
+        <header>
+            <h1>Clientes</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Inicio</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Listado de Clientes</h2>
+            <table id="clientesTable">
+                <thead>
+                    <tr>
+                        <th>ID Cliente</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Clientes cargados dinámicamente -->
+                </tbody>
+            </table>
+
+            <!-- Botones de acciones -->
+            <div class="actions">
+                <button id="addClient" class="btn">Agregar Cliente</button>
+                <button id="editClient" class="btn">Editar Cliente</button>
+                <button id="deleteClient" class="btn">Eliminar Cliente</button>
+            </div>
+        </main>
+        <footer>
+            <p>© 2024 Sistema de Gestión de Inventario</p>
+        </footer>
+    </div>
+
+    <!-- Modal para Agregar Cliente -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('addModal')">&times;</span>
+            <h2>Agregar Cliente</h2>
+            <form id="addClientForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" required>
+                
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" required>
+                
+                <button type="submit" class="btn">Agregar</button>
+                <button type="button" class="btn" onclick="closeModal('addModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Cliente -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('editModal')">&times;</span>
+            <h2>Editar Cliente</h2>
+            <form id="editClientForm">
+                <label for="id_cliente">ID Cliente:</label>
+                <input type="number" id="id_cliente_edit" required>
+                
+                <label for="nombre_edit">Nombre:</label>
+                <input type="text" id="nombre_edit" required>
+                
+                <label for="email_edit">Email:</label>
+                <input type="email" id="email_edit" required>
+                
+                <label for="telefono_edit">Teléfono:</label>
+                <input type="text" id="telefono_edit" required>
+                
+                <label for="direccion_edit">Dirección:</label>
+                <input type="text" id="direccion_edit" required>
+                
+                <button type="submit" class="btn">Actualizar</button>
+                <button type="button" class="btn" onclick="closeModal('editModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Eliminar Cliente -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('deleteModal')">&times;</span>
+            <h2>Eliminar Cliente</h2>
+            <form id="deleteClientForm">
+                <label for="id_cliente_delete">ID Cliente:</label>
+                <input type="number" id="id_cliente_delete" required>
+                
+                <button type="submit" class="btn">Eliminar</button>
+                <button type="button" class="btn" onclick="closeModal('deleteModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/clientes.js"></script>
 </body>
 </html>

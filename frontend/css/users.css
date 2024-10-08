@@ -1,0 +1,188 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eceff1, #cfd8dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background-color: #607d8b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    background-color: #546e7a;
+    padding: 10px 0;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #cfd8dc;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #37474f;
+    margin-bottom: 20px;
+}
+
+/* Tabla de Productos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #607d8b;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #eceff1;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    color: #37474f;
+}
+
+tbody tr:hover {
+    background-color: #cfd8dc;
+}
+
+/* Botón General */
+.btn {
+    background-color: #607d8b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #78909c;
+}
+
+/* Footer */
+footer {
+    background-color: #eceff1;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #607d8b;
+}
+
+/* Estilos para el Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], 
+input[type="number"], 
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal .btn {
+    background-color: #607d8b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal .btn:hover {
+    background-color: #78909c;
+}

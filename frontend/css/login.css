@@ -1,3 +1,4 @@
+/* Estilos Generales */
 * {
     margin: 0;
     padding: 0;
@@ -6,140 +7,91 @@
 }
 
 body {
+    background: linear-gradient(135deg, #C2C8C5, #D0D0DA); /* Colores suaves del fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #E0F7FA,#B2DFDB, #90A4AE,#607D8B, #37474F);
-
-    background-size: 300% 300%;
-    animation: gradientAnimation 10s ease infinite;
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-}
-
-.login-box {
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    animation: fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-h2 {
-    margin-bottom: 30px;
     color: #333;
-    font-size: 28px;
-    font-weight: 600;
 }
 
-.input-group {
-    position: relative;
+/* Contenedor Principal */
+.login-container {
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 15px;
+    border: 3px solid #7697A0; /* Color del marco */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Encabezado */
+h2 {
+    font-size: 2.4em;
+    font-weight: 700;
+    color: #4A707A; /* Color del título */
     margin-bottom: 30px;
 }
 
-.input-group input {
+/* Grupo de entradas */
+.input-group {
+    margin-bottom: 25px;
+}
+
+input {
     width: 100%;
     padding: 15px;
     font-size: 16px;
-    background-color: #f1f1f1;
-    border: 2px solid transparent;
-    border-radius: 10px;
+    border: 2px solid #94B0B7; /* Borde en tono suave */
+    border-radius: 8px;
+    background-color: #F5F5F5; /* Fondo claro */
     outline: none;
     transition: all 0.3s ease;
 }
 
-.input-group input:focus {
-    background-color: #e0e0e0;
-    border-color: #607D8B;
+input:focus {
+    border-color: #7697A0; /* Color más intenso al hacer foco */
+    background-color: #ffffff;
 }
 
-.input-group label {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #aaa;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-.input-group input:focus+label,
-.input-group input:not(:placeholder-shown)+label {
-    top: -10px;
-    left: 10px;
-    font-size: 12px;
-    color: #120e10;
-}
-
-button.login-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: #030202;
-    border: none;
-    border-radius: 10px;
+/* Botón de Ingreso */
+.login-btn {
+    background-color: #4A707A;
     color: white;
+    padding: 15px;
     font-size: 18px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button.login-btn:hover {
-    background-color: #607D8B;
+.login-btn:hover {
+    background-color: #7697A0; /* Color más claro al pasar el mouse */
+    transform: scale(1.05);
 }
 
-.extra-options {
-    margin-top: 20px;
-}
+/* Estilos responsivos */
+@media screen and (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
 
-.extra-options a {
-    display: block;
-    margin: 10px 0;
-    color: #857b69;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
+    h2 {
+        font-size: 1.8em;
+    }
 
-.extra-options a:hover {
-    color: #607D8B;
-    text-decoration: underline;
-}
+    input {
+        padding: 12px;
+        font-size: 14px;
+    }
 
+    .login-btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+}

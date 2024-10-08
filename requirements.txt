@@ -5,3 +5,4 @@ plotly
 statsmodels
 prophet
 psycopg2-binary
+Flask==2.1.1  # o la versión más reciente que hayas instalado

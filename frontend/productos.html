@@ -4,37 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Productos</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/productos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Productos</h1>
-        <nav>
-            <ul>
-                <li><a href="dashboard.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <!-- Otros enlaces de navegación -->
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Listado de Productos</h2>
-        <table id="productosTable">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Los productos se cargarán aquí dinámicamente -->
-            </tbody>
-        </table>
-        <button id="addProduct">Agregar Producto</button>
-    </main>
+    <div class="container">
+        <header>
+            <h1>Productos</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Inicio</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Listado de Productos</h2>
+            <table id="productosTable">
+                <thead>
+                    <tr>
+                        <th>ID Producto</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Productos cargados dinámicamente -->
+                </tbody>
+            </table>
+            
+            <!-- Sección de botones en la parte inferior -->
+            <div class="actions">
+                <button id="addProduct" class="btn">Agregar Producto</button>
+                <button id="editProduct" class="btn">Editar Producto</button>
+                <button id="deleteProduct" class="btn">Eliminar Producto</button>
+                <button id="updateProduct" class="btn">Actualizar Tabla</button>
+            </div>
+        </main>
+        <footer>
+            <p>© 2024 Sistema de Gestión de Inventario</p>
+        </footer>
+    </div>
+
+    <!-- Modal para Agregar Producto -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('addModal')">&times;</span>
+            <h2>Agregar Producto</h2>
+            <form id="addProductForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" required>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" required>
+
+                <label for="cantidad_stock">Cantidad:</label>
+                <input type="number" id="cantidad_stock" required>
+
+                <label for="id_categoria">ID Categoría:</label>
+                <input type="number" id="id_categoria" required>
+
+                <button type="submit" class="btn">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Producto -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('editModal')">&times;</span>
+            <h2>Editar Producto</h2>
+            <form id="editProductForm">
+                <label for="id_producto">ID Producto:</label>
+                <input type="number" id="id_producto" required>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre_edit" required>
+
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion_edit" required>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio_edit" required>
+
+                <label for="cantidad_stock">Cantidad:</label>
+                <input type="number" id="cantidad_stock_edit" required>
+
+                <label for="id_categoria">ID Categoría:</label>
+                <input type="number" id="id_categoria_edit" required>
+
+                <button type="submit" class="btn">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Eliminar Producto -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('deleteModal')">&times;</span>
+            <h2>Eliminar Producto</h2>
+            <form id="deleteProductForm">
+                <label for="id_producto">ID Producto:</label>
+                <input type="number" id="id_producto_delete" required>
+
+                <button type="submit" class="btn">Eliminar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/productos.js"></script>
 </body>
 </html>

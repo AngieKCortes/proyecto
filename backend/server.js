@@ -3,12 +3,31 @@
 const express = require('express');
 const app = express();
 const pool = require('./db');  // Importar conexión a PostgreSQL
+const { exec } = require('child_process'); // Importar child_process
 
-// Middlewares
+const PORT = process.env.PORT || 3000;
+
+// Middleware
 app.use(express.json());  // Para que Express pueda leer y parsear JSON
-app.use(express.static('frontend'));
+app.use(express.static('frontend')); // Servir archivos estáticos desde la carpeta 'frontend'
+
+// Ruta para ejecutar el script de Python
+app.get('/api/prediction', (req, res) => {
+    exec('python backend/ai/demand_prediction.py', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error ejecutando el script: ${error.message}`);
+            return res.status(500).send('Error ejecutando el script');
+        }
+        if (stderr) {
+            console.error(`Error: ${stderr}`);
+            return res.status(500).send('Error en el script');
+        }
+        res.json({ result: stdout });
+    });
+});
 
 // Rutas
+const usersRoutes = require('./routes/users'); // Importar las rutas de usuarios
 const productosRoutes = require('./routes/productos');
 const ventasRoutes = require('./routes/ventas');
 const proveedoresRoutes = require('./routes/proveedores');
@@ -19,9 +38,10 @@ const detallePedidosRoutes = require('./routes/detalle_pedidos');
 const prediccionesRoutes = require('./routes/predicciones');
 const authRoutes = require('./routes/auth');
 
-// Conectar las rutas a sus respectivos endpoints
 
-app.use('/api/auth', authRoutes);  // Rutas para productos
+// Conectar las rutas a sus respectivos endpoints
+app.use('/api/auth', authRoutes);  // Rutas para autenticación
+app.use('/api/users', usersRoutes);
 app.use('/api/productos', productosRoutes);  // Rutas para productos
 app.use('/api/ventas', ventasRoutes);        // Rutas para ventas
 app.use('/api/proveedores', proveedoresRoutes);  // Rutas para proveedores
@@ -37,7 +57,6 @@ app.get('/', (req, res) => {
 });
 
 // Iniciar servidor
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

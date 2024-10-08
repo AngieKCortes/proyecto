@@ -4,36 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Ventas</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ventas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Ventas</h1>
-        <nav>
-            <ul>
-                <li><a href="dashboard.html">Inicio</a></li>
-                <li><a href="ventas.html">Ventas</a></li>
-                <!-- Otros enlaces de navegación -->
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Listado de Ventas</h2>
-        <table id="ventasTable">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Cliente</th>
-                    <th>Monto Total</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Las ventas se cargarán aquí dinámicamente -->
-            </tbody>
-        </table>
-        <button id="addSale">Agregar Venta</button>
-    </main>
+    <div class="container">
+        <header>
+            <h1>Ventas</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Inicio</a></li>
+                    <li><a href="ventas.html">Ventas</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Listado de Ventas</h2>
+            <table id="ventasTable">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Monto Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las ventas se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+            <div class="actions">
+                <button id="addSale" class="btn">Agregar Venta</button>
+                <button id="editSale" class="btn">Editar Venta</button>
+                <button id="deleteSale" class="btn">Eliminar Venta</button>
+                <button id="updateSale" class="btn">Actualizar Tabla</button>
+            </div>
+        </main>
+        <footer>
+            <p>© 2024 Sistema de Gestión de Inventario</p>
+        </footer>
+    </div>
     <script src="js/ventas.js"></script>
 </body>
 </html>

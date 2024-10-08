@@ -18,17 +18,17 @@ router.get('/', async (req, res) => {
     res.json(result.rows);
   } catch (err) {
     console.error(err.message);
-  }
+  } 
 });
 
 // Agregar un nuevo producto
 router.post('/', async (req, res) => {
   try {
-    const { nombre, descripcion, precio, cantidad_stock, id_categoria, id_proveedor } = req.body;
+    const { nombre, descripcion, precio, cantidad_stock, id_categoria} = req.body;
     const newProduct = await pool.query(
-      `INSERT INTO productos (nombre, descripcion, precio, cantidad_stock, id_categoria, id_proveedor) 
-       VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,
-      [nombre, descripcion, precio, cantidad_stock, id_categoria, id_proveedor]
+      `INSERT INTO productos (nombre, descripcion, precio, cantidad_stock, id_categoria) 
+       VALUES($1, $2, $3, $4, $5) RETURNING *`,
+      [nombre, descripcion, precio, cantidad_stock, id_categoria]
     );
     res.json(newProduct.rows[0]);
   } catch (err) {
@@ -40,11 +40,11 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, descripcion, precio, cantidad_stock, id_categoria, id_proveedor } = req.body;
+    const { nombre, descripcion, precio, cantidad_stock, id_categoria } = req.body;
     const updatedProduct = await pool.query(
-      `UPDATE productos SET nombre = $1, descripcion = $2, precio = $3, cantidad_stock = $4, id_categoria = $5, id_proveedor = $6
-       WHERE id_producto = $7 RETURNING *`,
-      [nombre, descripcion, precio, cantidad_stock, id_categoria, id_proveedor, id]
+      `UPDATE productos SET nombre = $1, descripcion = $2, precio = $3, cantidad_stock = $4, id_categoria = $5
+       WHERE id_producto = $6 RETURNING *`,
+      [nombre, descripcion, precio, cantidad_stock, id_categoria, id]
     );
     res.json(updatedProduct.rows[0]);
   } catch (err) {

@@ -1,0 +1,122 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eceff1, #cfd8dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background-color: #607d8b; /* Color de encabezado */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    background-color: #546e7a; /* Color de fondo de navegación */
+    padding: 10px 0;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white; /* Color de enlaces */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #cfd8dc; /* Color de enlaces al pasar el ratón */
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #37474f; /* Color del título de la sección */
+    margin-bottom: 20px;
+}
+
+/* Tabla de Pedidos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #607d8b; /* Color de encabezado de la tabla */
+    color: white; /* Color del texto en el encabezado */
+    padding: 12px;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #eceff1; /* Color de filas impares */
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    color: #37474f; /* Color del texto en las celdas */
+}
+
+tbody tr:hover {
+    background-color: #cfd8dc; /* Color al pasar el ratón sobre las filas */
+}
+
+/* Botones */
+.btn {
+    background-color: #607d8b; /* Color de los botones */
+    color: white; /* Texto blanco en botones */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Espaciado entre botones */
+}
+
+.btn:hover {
+    background-color: #78909c; /* Color al pasar el ratón sobre los botones */
+}
+
+/* Footer */
+footer {
+    background-color: #eceff1; /* Color de fondo del pie de página */
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #607d8b; /* Color del texto en el pie de página */
+}

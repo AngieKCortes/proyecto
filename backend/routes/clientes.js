@@ -1,5 +1,3 @@
-// backend/routes/clientes.js
-
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -8,9 +6,10 @@ const pool = require('../db');
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM clientes');
-    res.json(result.rows);
+    res.status(200).json(result.rows);
   } catch (err) {
     console.error(err.message);
+    res.status(500).json({ error: 'Error al obtener los clientes' });
   }
 });
 
@@ -23,9 +22,10 @@ router.post('/', async (req, res) => {
        VALUES($1, $2, $3, $4) RETURNING *`,
       [nombre, email, telefono, direccion]
     );
-    res.json(newClient.rows[0]);
+    res.status(201).json(newClient.rows[0]);
   } catch (err) {
     console.error(err.message);
+    res.status(500).json({ error: 'Error al agregar el cliente' });
   }
 });
 
@@ -39,9 +39,10 @@ router.put('/:id', async (req, res) => {
        WHERE id_cliente = $5 RETURNING *`,
       [nombre, email, telefono, direccion, id]
     );
-    res.json(updatedClient.rows[0]);
+    res.status(200).json(updatedClient.rows[0]);
   } catch (err) {
     console.error(err.message);
+    res.status(500).json({ error: 'Error al actualizar el cliente' });
   }
 });
 
@@ -50,9 +51,10 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     await pool.query('DELETE FROM clientes WHERE id_cliente = $1', [id]);
-    res.json({ message: 'Cliente eliminado correctamente' });
+    res.status(200).json({ message: 'Cliente eliminado correctamente' });
   } catch (err) {
     console.error(err.message);
+    res.status(500).json({ error: 'Error al eliminar el cliente' });
   }
 });
 

@@ -1,0 +1,171 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eceff1, #cfd8dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background-color: #607d8b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    background-color: #546e7a;
+    padding: 10px 0;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #cfd8dc;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #37474f;
+    margin-bottom: 20px;
+}
+
+/* Tabla de Clientes */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #607d8b;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #eceff1;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    color: #37474f;
+}
+
+tbody tr:hover {
+    background-color: #cfd8dc;
+}
+
+/* Botones de Acciones */
+.actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.actions .btn {
+    background-color: #607d8b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.actions .btn:hover {
+    background-color: #78909c;
+}
+
+/* Modales - Ocultos inicialmente */
+.modal {
+    display: none; /* Oculto al inicio */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido de los modales */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
