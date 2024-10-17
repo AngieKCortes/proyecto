@@ -1,5 +1,4 @@
 // backend/routes/productos.js
-const productos = require("../assets/productos.json")
 const PDF = require("pdfkit");
 const ListaCircular = require('../utils/ListaCircular');
 const express = require('express');
@@ -62,42 +61,97 @@ router.delete('/:id', async (req, res) => {
     console.error(err.message);
   }
 });
-
-router.get("/pdf",async (req, res) => {
+//PDF
+router.get("/pdf", async (req, res) => {
   try {
-      const documento = new PDF()
+    const PDFDocument = require('pdfkit');
+    const documento = new PDFDocument({
+      margins: { top: 50, bottom: 50, left: 50, right: 50 } // Establecer márgenes en cada página
+    });
+
+    // Encabezado y título
+    documento
+      .font('Helvetica-Bold')
+      .fontSize(20)
+      .fillColor("#4A90E2")
+      .text("Lista de Inventario", { align: "center" })
+      .moveDown(2); // Espacio después del título
+
+    // Obtener productos desde la base de datos
+    const result = await pool.query(`
+      SELECT p.nombre, p.precio, p.descripcion, p.cantidad_stock 
+      FROM productos p
+    `);
+
+    const listaCircular = new ListaCircular();
+    listaCircular.cargarArreglo(result.rows); // Cargar productos desde la BD
+
+    listaCircular.recorrer(producto => {
+      // Verificar si se debe saltar de página si el espacio es insuficiente
+      if (documento.y > 700) {
+        documento.addPage(); // Agregar nueva página
+      }
+
+      // Título de cada producto en azul
       documento
-          .fontSize(20)
-          .text("Lista de inventario", {
-              align: "center",
-          });
-      documento.moveDown();
-      const listaCircular = new ListaCircular()
+        .font('Helvetica-Bold')
+        .fontSize(14)
+        .fillColor("#4A90E2")
+        .text(`Nombre:`, { continued: true }) // Subtítulo en negrita
+        .font('Helvetica')
+        .fillColor("black")
+        .text(` ${producto.nombre}`, { align: 'left' }); // Valor en texto regular
 
-      listaCircular.cargarArreglo(productos)
+      // Detalles del producto
+      documento
+        .moveDown(0.5)
+        .font('Helvetica-Bold')
+        .fillColor("#4A90E2")
+        .text('Descripción:', { continued: true }) // Subtítulo en negrita
+        .font('Helvetica')
+        .fillColor("black")
+        .text(` ${producto.descripcion}`); // Valor
 
-      listaCircular.recorrer(producto => {
+      documento
+        .moveDown(0.5)
+        .font('Helvetica-Bold')
+        .fillColor("#4A90E2")
+        .text('Precio:', { continued: true }) // Subtítulo en negrita
+        .font('Helvetica')
+        .fillColor("black")
+        .text(` $${producto.precio}`);
 
-          documento.fontSize(14).text(`Nombre: ${producto.nombre}`);
-          documento.fontSize(12).text(`Precio: ${producto.precio}`);
-          documento.fontSize(12).text(`Descripcion: ${producto.descripcion}`);
-          documento.fontSize(12).text(`Cantidad: ${producto.stock}`);
-          documento.moveDown();
-      })
-      // Finalizar el PDF
-      documento.end();
+      documento
+        .moveDown(0.5)
+        .font('Helvetica-Bold')
+        .fillColor("#4A90E2")
+        .text('Cantidad en Stock:', { continued: true }) // Subtítulo en negrita
+        .font('Helvetica')
+        .fillColor("black")
+        .text(` ${producto.cantidad_stock} unidades`);
 
-      // Configurar la respuesta como un archivo PDF
-      res.setHeader("Content-Type", "application/pdf");
-      res.setHeader("Content-Disposition", "attachment; filename = productos.pdf");
+      documento.moveDown(1); // Espacio entre productos
 
-      // Enviar el PDF generado
-      documento.pipe(res);
+      // Línea divisoria entre productos
+      documento
+        .moveTo(50, documento.y)
+        .lineTo(550, documento.y)
+        .stroke()
+        .moveDown(1);
+    });
+
+    // Finalizar el documento y enviarlo
+    documento.end();
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=productos.pdf");
+    documento.pipe(res);
 
   } catch (error) {
-      console.log(error)
-      res.status(500).json({ message: 'Error al crear PDF' });
+    console.log(error);
+    res.status(500).json({ message: 'Error al crear PDF' });
   }
-})
+});
+
+
 
 module.exports = router;

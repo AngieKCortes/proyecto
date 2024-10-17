@@ -11,20 +11,27 @@ class ListaCircular {
         this.tail = null;
     }
 
+    // Método para verificar si la lista está vacía
+    isEmpty() {
+        return this.head === null;
+    }
+
     // Método para agregar un nodo al final de la lista
     insertar(value) {
         const newNode = new Node(value);
 
-        if (!this.head) {
-            // Si la lista está vacía, head y tail son el mismo nodo
+        if (this.isEmpty()) {
+            // Si la lista está vacía, el nuevo nodo es tanto el head como el tail
             this.head = newNode;
             this.tail = newNode;
-            this.tail.next = this.head; // La cola apunta al principio para hacerla circular
         } else {
-            this.tail.next = newNode; // El último nodo apunta al nuevo nodo
-            this.tail = newNode; // Actualizamos el nodo final
-            this.tail.next = this.head; // El nuevo nodo final apunta al head para mantener la circularidad
+            // Si la lista no está vacía, agregamos el nuevo nodo al final
+            this.tail.next = newNode;
+            this.tail = newNode;
         }
+
+        // Siempre mantenemos la circularidad apuntando el último nodo al head
+        this.tail.next = this.head;
     }
 
     // Método para crear una lista enlazada circular a partir de un arreglo
@@ -32,27 +39,21 @@ class ListaCircular {
         arr.forEach(element => this.insertar(element));
     }
 
-    // Método para imprimir la lista circular (deteniéndose después de una vuelta completa)
-    print() {
-        if (!this.head) return;
-
-        let current = this.head;
-        do {
-            console.log(current.value);
-            current = current.next;
-        } while (current !== this.head);
-    }
+    // Método para recorrer la lista circular y aplicar un callback a cada nodo
     recorrer(callback) {
-        if (!this.head) return;
+        if (this.isEmpty()) return;
+        
         let current = this.head;
-
-
         do {
             callback(current.value);
             current = current.next;
         } while (current !== this.head);
     }
-}
-    
 
-module.exports = ListaCircular
+    // Método para imprimir la lista circular (deteniéndose después de una vuelta completa)
+    print() {
+        this.recorrer(value => console.log(value));
+    }
+}
+
+module.exports = ListaCircular;

@@ -22,8 +22,10 @@
             <table id="pedidosTable">
                 <thead>
                     <tr>
-                        <th>Fecha</th>
-                        <th>Proveedor</th>
+                        <th>ID Pedido</th>
+                        <th>Fecha del Pedido</th>
+                        <th>ID Proveedor</th>
+                        <th>Nombre</th>
                         <th>Monto Total</th>
                     </tr>
                 </thead>
@@ -42,6 +44,67 @@
             <p>© 2024 Sistema de Gestión de Inventario</p>
         </footer>
     </div>
+
+    <!-- Modal para Agregar Pedido -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('addModal')">&times;</span>
+            <h2>Agregar Pedido</h2>
+            <form id="addPedidoForm">
+                <label for="fecha_pedido">Fecha del Pedido:</label>
+                <input type="date" id="fecha_pedido" required>
+
+                <label for="id_proveedor">ID Proveedor:</label>
+                <input type="number" id="id_proveedor" required>
+
+                <label for="monto_total">Monto Total:</label>
+                <input type="number" id="monto_total" required>
+
+                <button type="submit" class="btn">Agregar</button>
+                <button type="button" class="btn" onclick="closeModal('addModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Pedido -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('editModal')">&times;</span>
+            <h2>Editar Pedido</h2>
+            <form id="editPedidoForm">
+                <label for="id_pedido_edit">ID Pedido:</label>
+                <input type="number" id="id_pedido_edit" required>
+
+                <label for="fecha_pedido_edit">Fecha del Pedido:</label>
+                <input type="date" id="fecha_pedido_edit" required>
+
+                <label for="id_proveedor_edit">ID Proveedor:</label>
+                <input type="number" id="id_proveedor_edit" required>
+
+                <label for="monto_total_edit">Monto Total:</label>
+                <input type="number" id="monto_total_edit" required>
+
+                <button type="submit" class="btn">Actualizar</button>
+                <button type="button" class="btn" onclick="closeModal('editModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Eliminar Pedido -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('deleteModal')">&times;</span>
+            <h2>Eliminar Pedido</h2>
+            <form id="deletePedidoForm">
+                <label for="id_pedido_delete">ID Pedido:</label>
+                <input type="number" id="id_pedido_delete" required>
+
+                <button type="submit" class="btn">Eliminar</button>
+                <button type="button" class="btn" onclick="closeModal('deleteModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/pedidos.js"></script>
 </body>
 </html>

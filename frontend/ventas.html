@@ -14,7 +14,6 @@
             <nav>
                 <ul>
                     <li><a href="dashboard.html">Inicio</a></li>
-                    <li><a href="ventas.html">Ventas</a></li>
                 </ul>
             </nav>
         </header>
@@ -23,6 +22,8 @@
             <table id="ventasTable">
                 <thead>
                     <tr>
+                        <th>ID Factura</th>
+                        <th>ID Cliente</th>
                         <th>Fecha</th>
                         <th>Cliente</th>
                         <th>Monto Total</th>
@@ -36,13 +37,88 @@
                 <button id="addSale" class="btn">Agregar Venta</button>
                 <button id="editSale" class="btn">Editar Venta</button>
                 <button id="deleteSale" class="btn">Eliminar Venta</button>
-                <button id="updateSale" class="btn">Actualizar Tabla</button>
+                <button id="generateInvoice" class="btn">Generar Factura</button>
             </div>
         </main>
         <footer>
             <p>© 2024 Sistema de Gestión de Inventario</p>
         </footer>
     </div>
+
+    <!-- Modal para Agregar Venta -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('addModal')">&times;</span>
+            <h2>Agregar Venta</h2>
+            <form id="addSaleForm">
+                <label for="fecha_venta">Fecha de Venta:</label>
+                <input type="date" id="fecha_venta" required>
+
+                <label for="id_cliente">ID Cliente:</label>
+                <input type="number" id="id_cliente" required>
+
+                <label for="monto_total">Monto Total:</label>
+                <input type="number" id="monto_total" required>
+
+                <button type="submit" class="btn">Agregar</button>
+                <button type="button" class="btn" onclick="closeModal('addModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Venta -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('editModal')">&times;</span>
+            <h2>Editar Venta</h2>
+            <form id="editSaleForm">
+                <label for="id_venta_edit">ID Venta:</label>
+                <input type="number" id="id_venta_edit" required>
+
+                <label for="fecha_venta_edit">Fecha de Venta:</label>
+                <input type="date" id="fecha_venta_edit" required>
+
+                <label for="id_cliente_edit">ID Cliente:</label>
+                <input type="number" id="id_cliente_edit" required>
+
+                <label for="monto_total_edit">Monto Total:</label>
+                <input type="number" id="monto_total_edit" required>
+
+                <button type="submit" class="btn">Actualizar</button>
+                <button type="button" class="btn" onclick="closeModal('editModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Eliminar Venta -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('deleteModal')">&times;</span>
+            <h2>Eliminar Venta</h2>
+            <form id="deleteSaleForm">
+                <label for="id_venta_delete">ID Venta:</label>
+                <input type="number" id="id_venta_delete" required>
+
+                <button type="submit" class="btn">Eliminar</button>
+                <button type="button" class="btn" onclick="closeModal('deleteModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Generar Factura -->
+    <div id="generateInvoiceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('generateInvoiceModal')">&times;</span>
+            <h2>Generar Factura</h2>
+            <form id="generateInvoiceForm">
+                <label for="id_venta">ID Venta:</label>
+                <input type="number" id="id_venta" required>
+                <button type="submit" class="btn">Generar PDF</button>
+                <button type="button" class="btn" onclick="closeModal('generateInvoiceModal')">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/ventas.js"></script>
 </body>
 </html>

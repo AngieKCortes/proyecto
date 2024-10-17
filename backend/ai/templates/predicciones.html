@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predicciones de Demanda</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/predicciones.css') }}"></head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/predicciones.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Carga de Plotly -->
+</head>
 <body>
     <div class="container">
         <header>
             <h1>Predicciones de Demanda</h1>
         </header>
+        <ul>
+            <li><a href="http://localhost:3000/dashboard.html">Inicio</a></li>
+        </ul>
         <main>
+    
+            
             <h2>Listado de Predicciones</h2>
             <table id="prediccionesTable">
                 <thead>
@@ -28,7 +35,34 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+            <div id="graficoPredicciones"></div> <!-- Div para el gráfico -->
         </main>
     </div>
+
+    <script>
+        const fechas = predicciones.map(p => p.ds);
+        const valores = predicciones.map(p => p.yhat);
+
+        const data = [{
+            x: fechas,
+            y: valores,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Predicción',
+            line: { shape: 'spline', color: '#607d8b' } // Color de la línea
+        }];
+
+        const layout = {
+            title: 'Predicción de Demanda',
+            xaxis: { title: 'Fecha' },
+            yaxis: { title: 'Cantidad Predicha' },
+            paper_bgcolor: '#eceff1', // Fondo del gráfico
+            plot_bgcolor: 'white',
+            font: { color: '#37474f' } // Color de texto
+        };
+
+        Plotly.newPlot('graficoPredicciones', data, layout); // Genera el gráfico
+    </script>
 </body>
 </html>

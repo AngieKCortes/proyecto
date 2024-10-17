@@ -143,3 +143,9 @@ document.getElementById('deleteProduct').addEventListener('click', function () {
 document.getElementById('updateProduct').addEventListener('click', async function () {
     await cargarProductos();
 });
+
+document.getElementById('generatePDF').addEventListener('click', function () {
+    window.location.href = '/api/productos/pdf'; // La URL de tu backend que genera el PDF
+});
+
+

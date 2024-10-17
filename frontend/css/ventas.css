@@ -112,11 +112,55 @@ tbody tr:hover {
     background-color: #78909c; /* Color al pasar el ratón sobre los botones */
 }
 
-/* Footer */
-footer {
-    background-color: #eceff1; /* Color de fondo del pie de página */
-    padding: 15px;
-    text-align: center;
-    font-size: 0.9em;
-    color: #607d8b; /* Color del texto en el pie de página */
+/* Modales */
+.modal {
+    display: none; /* Oculto al inicio */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido de los modales */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+/* Cerrar botón */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

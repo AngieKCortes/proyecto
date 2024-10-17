@@ -43,11 +43,6 @@ document.getElementById('addClient').addEventListener('click', function() {
     openModal('addModal'); // Abre el modal de agregar cliente
 });
 
-// Cerrar modal de agregar cliente
-document.getElementById('closeAddClientModal').addEventListener('click', function() {
-    closeModal('addModal');
-});
-
 // Evento para agregar cliente
 document.getElementById('addClientForm').addEventListener('submit', async function(e) {
     e.preventDefault();

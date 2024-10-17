@@ -5,7 +5,7 @@ const pool = require('../db');
 // Obtener todos los clientes
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM clientes');
+    const result = await pool.query('SELECT * FROM clientes ORDER BY id_cliente ASC');
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err.message);

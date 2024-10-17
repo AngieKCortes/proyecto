@@ -160,12 +160,68 @@ label {
     font-weight: bold;
 }
 
+/* Estilo para los campos de entrada */
 input[type="text"],
-input[type="number"],
-input[type="password"] {
+input[type="email"],
+input[type="tel"],
+textarea {
     width: 100%;
-    padding: 10px;
+    box-sizing: border-box;
+    padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
+
+/* Asegurar que todos los campos, incluido el de tipo número, tengan el mismo tamaño */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"], /* Añadido el campo de tipo number */
+textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Asegura que el padding y borde se incluyan en el ancho total */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Cambiar color de borde y sombra al hacer foco */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus, /* Añadir aquí el tipo number */
+textarea:focus {
+    border-color: #78909c; /* Color azul al hacer foco */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra sutil */
+    outline: none; /* Elimina el borde por defecto de foco */
+}
+
+/* Botones más modernos */
+button {
+    padding: 10px 20px;
+    background-color: #78909c; /* Color azul */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+/* Cambiar color del botón al pasar el ratón */
+button:hover {
+    background-color: #78909c; /* Azul más oscuro al hacer hover */
+}
+
+/* Botón de cancelar con estilo diferente */
+button[type="button"] {
+    background-color: #34383b; /* Gris para el botón de cancelar */
+}
+
+button[type="button"]:hover {
+    background-color: #212224; /* Gris más oscuro al hacer hover */
+}
+
