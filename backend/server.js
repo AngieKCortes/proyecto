@@ -1,5 +1,4 @@
-// backend/server.js
-
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const pool = require('./db');  // Importar conexión a PostgreSQL
@@ -26,30 +25,29 @@ app.get('/api/prediction', (req, res) => {
     });
 });
 
-// Rutas
-const usersRoutes = require('./routes/users'); // Importar las rutas de usuarios
-const productosRoutes = require('./routes/productos');
-const ventasRoutes = require('./routes/ventas');
-const proveedoresRoutes = require('./routes/proveedores');
-const clientesRoutes = require('./routes/clientes');
-const detalleVentasRoutes = require('./routes/detalle_ventas');
-const pedidosRoutes = require('./routes/pedidos');
-const detallePedidosRoutes = require('./routes/detalle_pedidos');
-const prediccionesRoutes = require('./routes/predicciones');
-const authRoutes = require('./routes/auth');
-
+// Importar rutas
+const usersRoutes = require('./routes/users'); // Rutas de usuarios
+const productosRoutes = require('./routes/productos'); // Rutas de productos
+const ventasRoutes = require('./routes/ventas'); // Rutas de ventas
+const proveedoresRoutes = require('./routes/proveedores'); // Rutas de proveedores
+const clientesRoutes = require('./routes/clientes'); // Rutas de clientes
+const detalleVentasRoutes = require('./routes/detalle_ventas'); // Rutas de detalle de ventas
+const pedidosRoutes = require('./routes/pedidos'); // Rutas de pedidos
+const detallePedidosRoutes = require('./routes/detalle_pedidos'); // Rutas de detalle de pedidos
+const prediccionesRoutes = require('./routes/predicciones'); // Rutas de predicciones
+const authRoutes = require('./routes/auth'); // Rutas de autenticación
 
 // Conectar las rutas a sus respectivos endpoints
-app.use('/api/auth', authRoutes);  // Rutas para autenticación
+app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
-app.use('/api/productos', productosRoutes);  // Rutas para productos
-app.use('/api/ventas', ventasRoutes);        // Rutas para ventas
-app.use('/api/proveedores', proveedoresRoutes);  // Rutas para proveedores
-app.use('/api/clientes', clientesRoutes);    // Rutas para clientes
-app.use('/api/detalle_ventas', detalleVentasRoutes);  // Rutas para detalle de ventas
-app.use('/api/pedidos', pedidosRoutes);      // Rutas para pedidos
-app.use('/api/detalle_pedidos', detallePedidosRoutes);  // Rutas para detalle de pedidos
-app.use('/api/predicciones', prediccionesRoutes);  // Rutas para predicciones de demanda
+app.use('/api/productos', productosRoutes);
+app.use('/api/ventas', ventasRoutes);
+app.use('/api/proveedores', proveedoresRoutes);
+app.use('/api/clientes', clientesRoutes);
+app.use('/api/detalle_ventas', detalleVentasRoutes);
+app.use('/api/pedidos', pedidosRoutes);
+app.use('/api/detalle_pedidos', detallePedidosRoutes);
+app.use('/api/predicciones', prediccionesRoutes);
 
 // Ruta raíz
 app.get('/', (req, res) => {

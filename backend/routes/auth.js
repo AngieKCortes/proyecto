@@ -7,7 +7,6 @@ const pool = require('../db'); // Asegúrate de tener la conexión a la base de 
 // Ruta para iniciar sesión
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
-
     try {
         // Verificar usuario y contraseña
         const result = await pool.query('SELECT * FROM usuarios WHERE username = $1 AND password = $2', [username, password]);
