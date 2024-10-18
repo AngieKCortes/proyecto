@@ -4,6 +4,7 @@ const ListaCircular = require('../utils/ListaCircular');
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
+const productos = require("../assets/productos.json");
 
 // Obtener todos los productos
 router.get('/', async (req, res) => {
@@ -84,7 +85,7 @@ router.get("/pdf", async (req, res) => {
     `);
 
     const listaCircular = new ListaCircular();
-    listaCircular.cargarArreglo(result.rows); // Cargar productos desde la BD
+    listaCircular.cargarArreglo(productos); // Cargar productos desde la BD
 
     listaCircular.recorrer(producto => {
       // Verificar si se debe saltar de página si el espacio es insuficiente
